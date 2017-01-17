@@ -15,9 +15,13 @@ config = {
         forceAdminSSL: false,
         mail: {
             transport: 'SMTP',
-            options: {
-                host: process.env.MAIL_HOST
-            },
+	    options: {
+		service: process.env.GHOST_MAIL_SERVICE,
+		auth: {
+		    user: process.env.GHOST_MAIL_ACCOUNT,
+		    pass: process.env.GHOST_MAIL_AUTH
+		}
+	    },
             from: process.env.MAIL_FROM
         },
         database: {
